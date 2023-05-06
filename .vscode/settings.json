@@ -16,6 +16,8 @@
     "idf.toolsPathWin": "C:\\Users\\user\\.espressif",
     "idf.flashType": "UART",
     "files.associations": {
-        "gpio.h": "c"
+        "gpio.h": "c",
+        "esp_bt.h": "c",
+        "esp_bt_main.h": "c"
     }
 }
