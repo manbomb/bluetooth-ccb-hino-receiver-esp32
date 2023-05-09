@@ -1,0 +1,1 @@
+void config_button_and_register_callbacks(void *bt_single_cb, void *bt_long_cb);
