@@ -8,13 +8,7 @@
 #define GPIO_INPUT_PIN_SEL 1ULL << 0
 #define ESP_INTR_FLAG_DEFAULT 0
 
-static void button_cb(void *arg, void *usr_data)
-{
-    char *msg = (char *)usr_data;
-    printf("%s: %s\n", TAG, msg);
-}
-
-void app_main(void)
+void config_button_and_register_callbacks(void *bt_single_cb, void *bt_long_cb)
 {
     button_config_t gpio_btn_cfg = {
         .type = BUTTON_TYPE_GPIO,
@@ -31,8 +25,13 @@ void app_main(void)
         ESP_LOGE(TAG, "Button create failed");
     }
 
-    char * click = "CLICK";
-    iot_button_register_cb(gpio_btn, BUTTON_SINGLE_CLICK, button_cb, click);
-    char * longClick = "LONG";
-    iot_button_register_cb(gpio_btn, BUTTON_LONG_PRESS_START, button_cb, longClick);
+    if (bt_single_cb != NULL)
+    {
+        iot_button_register_cb(gpio_btn, BUTTON_SINGLE_CLICK, bt_single_cb, NULL);
+    }
+
+    if (bt_long_cb != NULL)
+    {
+        iot_button_register_cb(gpio_btn, BUTTON_LONG_PRESS_START, bt_long_cb, NULL);
+    }
 }
