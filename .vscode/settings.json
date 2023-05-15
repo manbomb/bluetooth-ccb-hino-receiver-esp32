@@ -18,6 +18,9 @@
     "files.associations": {
         "gpio.h": "c",
         "esp_bt.h": "c",
-        "esp_bt_main.h": "c"
+        "esp_bt_main.h": "c",
+        "button.h": "c",
+        "bluetooth.h": "c",
+        "esp_task_wdt.h": "c"
     }
 }
